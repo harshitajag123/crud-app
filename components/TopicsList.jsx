@@ -12,9 +12,16 @@ const getTopics = async () => {
 			throw new Error("Failed to fetch topics");
 		}
 
-		return res.json();
+		//return res.json();
+
+		const data = await res.json();
+		console.log("Fetched topics data:", data); // Debugging line
+		return data; // Return the full data object
 	} catch (error) {
 		console.log(error);
+
+		console.error("Error in getTopics:", error);
+		return {}; // Ensure it returns an empty object to avoid destructuring issues
 	}
 };
 
